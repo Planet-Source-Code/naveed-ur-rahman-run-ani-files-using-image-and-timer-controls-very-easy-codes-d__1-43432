@@ -1,0 +1,90 @@
+Please check off WordWrap from Edit menu.
+
+Author: Naveed Ur Rahman
+Email:	neenojee@hotmail.com
+Date:   11 Feb 2003
+
+Understanding Animation File (*.ani) Binary:
+
+RIFF Block: (Must Present if all animation files)
+
+	R	I	F	F		(Verification of ANI file)
+	n1	n2	n3	n4		(Full Animation File Size)
+	A	C	O	N		(Verification of ANI file)
+
+
+Information Block/Rough Block: (Not necessary in all animation files)
+Rough Block #1 (An Example)
+	L	I	S	T
+	n1	n2	n3	n4		(This Block Size)
+Rough Block #2 (An Example)
+	X1	X2	X3	X4
+	n1	n2	n3	n4		(This Block Size)
+				...(more blocks may be present)
+
+	a	n	i	h		(animation header - Sub Block of RIFF block)
+	$	0	0	0		(Leave it)
+	$	0	0	0		(Leave it)
+	n1	n2	n3	n4		(Number of Frames)
+	n1	n2	n3	n4		(Number of Visible Frames)
+
+	0	0	0	0		(Leaeve it)
+	0	0	0	0		(Leaeve it)
+	0	0	0	0		(Leaeve it)
+	0	0	0	0		(Leaeve it)
+	10	0	0	0	
+
+	n1	n2	n3	n4		(Leave it)
+RIFF Block End.
+
+RATE Block (Not necessary in all animation files):
+	r	a	t	e		(Rate block begins)
+	n1	n2	n3	n4		(Size of rate block)
+
+
+Information Block/Rough Block: (Not necessary in all animation files)
+Rough Block #1 (An Example)
+	S	e	q	[space]		(Some block)
+	n1	n2	n3	n4		(This Block Size)
+Rough Block #2 (An Example)
+	X1	X2	X3	X4		(Some block)
+	n1	n2	n3	n4		(This Block Size)
+				...(more blocks may be present)
+
+Delay sequence (Frame one-by-one):
+	n1	n2	n3	n4		(Frame 1 delay calculation)
+	n1	n2	n3	n4		(Frame 2 delay calculation)
+	n1	n2	n3	n4		(Frame 3 delay calculation)
+	n1	n2	n3	n4		(Frame ... delay calculation)
+				...(More frames delays)
+RATE Block End.
+
+LIST Block: (Must Present if all animation files)
+	L	I	S	T
+	n1	n2	n3	n4		(List Block Size)
+	f	r	a	m		(Indication of Begining of frames data)
+	
+Icons Integrity:
+
+	i	c	o	n		(Begining of an icon of a frame)
+	n1	n2	n3	n4		(Total size of integrated icon)
+	Now the icon begin.... after this icon
+	i	c	o	n		(Begining of an NEXT icon of a frame)
+	n1	n2	n3	n4		(Total size of integrated icon)
+	Now the second icon begin.... and so on (to the total number of frames)
+
+LIST Block End.
+File End.
+
+Calculating Values Of Lines 
+			n1	n2	n3	n4
+Solution: If N is the Value of the above line then
+			N = n1 + n2*256 + n3*256*256 + n4*256*256
+
+This is all what I search in the binary of ANIMATION files. If you know some thing MORE then you can make changes.
+
+
+--------------------------------
+Naveed iconEX 5.00 (Second Edition - XP-Look):
+Please login to www.iconex.0catch.com to have the greatest icon extractor for the free Download.
+--------------------------------
